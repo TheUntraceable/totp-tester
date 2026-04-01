@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-    name: "Create Untraceable Stack",
+    name: "TOTP Tester",
     description:
-        "Get up and running fast with Untraceable Stack.",
+        "Configure, generate, and test TOTP (Time-based One-Time Password) implementations locally.",
 };

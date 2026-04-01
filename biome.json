@@ -1,33 +1,38 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
-  "extends": ["ultracite"],
-  "linter": {
-    "enabled": true,
-    "includes": [
-      "**/*.ts",
-      "**/*.tsx",
-      "**/*.js",
-      "**/*.jsx",
-      "**/*.json",
-      "**/*.md"
-    ],
-    "rules": {
-      "style": {
-        "noNonNullAssertion": "off"
-      }
+    "$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
+    "css": {
+        "parser": {
+            "tailwindDirectives": true
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "includes": [
+            "**/*.ts",
+            "**/*.tsx",
+            "**/*.js",
+            "**/*.jsx",
+            "**/*.json",
+            "**/*.md"
+        ],
+        "rules": {
+            "recommended": true,
+            "style": {
+                "noNonNullAssertion": "off"
+            }
+        }
+    },
+    "files": {
+        "includes": ["**", "!!**/node_modules", "!!**/.git", "!!**/.next"]
+    },
+    "formatter": {
+        "enabled": true,
+        "indentWidth": 4,
+        "indentStyle": "space"
+    },
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
     }
-  },
-  "files": {
-    "experimentalScannerIgnores": ["node_modules", ".git", ".next"]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentWidth": 4,
-    "indentStyle": "space"
-  },
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  }
 }

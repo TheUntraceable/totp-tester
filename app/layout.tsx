@@ -1,28 +1,38 @@
 import "@/styles/globals.css";
 import clsx from "clsx";
-import { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 
-import { fontSans } from "@/config/fonts";
+import { fontMono, fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 
 import { Providers } from "./providers";
-import Head from "next/head";
 
 export const metadata: Metadata = {
     description: siteConfig.description,
     icons: {
-        icon: "/favicon.ico",
+        icon: "/icon.png",
+    },
+    openGraph: {
+        title: siteConfig.name,
+        description: siteConfig.description,
+        siteName: siteConfig.name,
+        type: "website",
     },
     title: {
         default: siteConfig.name,
         template: `%s - ${siteConfig.name}`,
     },
+    twitter: {
+        card: "summary_large_image",
+        title: siteConfig.name,
+        description: siteConfig.description,
+    },
 };
 
 export const viewport: Viewport = {
     themeColor: [
+        { color: "#0f1219", media: "(prefers-color-scheme: dark)" },
         { color: "white", media: "(prefers-color-scheme: light)" },
-        { color: "black", media: "(prefers-color-scheme: dark)" },
     ],
 };
 
@@ -33,17 +43,17 @@ export default function RootLayout({
 }) {
     return (
         <html suppressHydrationWarning lang="en">
-            
             <body
                 className={clsx(
-                    "min-h-screen bg-background font-sans antialiased",
+                    "min-h-screen bg-background text-foreground font-sans antialiased",
                     fontSans.variable,
+                    fontMono.variable,
                 )}
             >
                 <Providers
                     themeProps={{ attribute: "class", defaultTheme: "dark" }}
                 >
-                    <div className="flex flex-col">
+                    <div className="flex flex-col min-h-screen">
                         <main className="grow">{children}</main>
                     </div>
                 </Providers>

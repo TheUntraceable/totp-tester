@@ -3,10 +3,9 @@
 import type { ThemeProviderProps } from "next-themes";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useRouter } from "next/navigation";
-import * as React from "react";
+import type * as React from "react";
 
-import { HeroUIProvider } from "@heroui/system";
-import { ToastProvider } from "@heroui/toast";
+import { RouterProvider, ToastProvider } from "@heroui/react";
 
 export interface ProvidersProps {
     children: React.ReactNode;
@@ -25,11 +24,9 @@ export const Providers = ({ children, themeProps }: ProvidersProps) => {
     const router = useRouter();
 
     return (
-        <HeroUIProvider navigate={router.push}>
+        <RouterProvider navigate={router.push}>
             <ToastProvider />
-            <NextThemesProvider {...themeProps}>
-                {children}
-            </NextThemesProvider>
-        </HeroUIProvider>
+            <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+        </RouterProvider>
     );
 };
